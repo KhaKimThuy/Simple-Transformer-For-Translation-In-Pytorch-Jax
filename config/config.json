@@ -1,0 +1,21 @@
+{
+    "model_name": "PytorchTransformer",
+    "max_strlen": 128,
+    "batch_size":32,
+    "d_model": 512,
+    "d_ff": 512,
+    "emb_dim": 512,
+    "n_encoder_layers": 2,
+    "n_decoder_layers": 2,
+    "num_epochs": 5,
+    "heads": 8,
+    "dropout": 0.1,
+    "device": "cpu",
+    "lr": 3e-4,
+    "save_interval" : 1,
+    "seed" : 42,
+    "use_bias" : false,
+    "training": true,
+    "src_vocab_path" : "../vocab/src_vocab.txt",
+    "trg_vocab_path" : "../vocab/trg_vocab.txt"
+}
