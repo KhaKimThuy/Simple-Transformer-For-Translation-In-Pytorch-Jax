@@ -122,7 +122,8 @@ def get_raw_vocab(sentence_list, args, src=True):
 
 def get_vocab(data, args):
     if not os.path.exists(args["trg_vocab_path"]):
-        os.makedirs(f"vocab", exist_ok=True)
+        folder = "/".join(args["trg_vocab_path"].split("/")[:-1])
+        os.makedirs(folder, exist_ok=True)
         print("Create prepare dataset ...")
         src_sentence_list = []
         trg_sentence_list = []
@@ -174,7 +175,8 @@ def get_data_loader(args):
 
 
 if __name__ == "__main__":
-    data = load_dataset("Helsinki-NLP/opus_books", f"{SRC_LANG}-{TGT_LANG}")
-    train_val_data = data["train"].train_test_split(test_size=0.2)
-    val_test_data = train_val_data["test"].train_test_split(test_size=0.2)
+    print(f"{SRC_LANG}-{TGT_LANG}")
+    # data = load_dataset("Helsinki-NLP/opus_books", f"{SRC_LANG}-{TGT_LANG}")
+    # train_val_data = data["train"].train_test_split(test_size=0.2)
+    # val_test_data = train_val_data["test"].train_test_split(test_size=0.2)
 

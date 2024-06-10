@@ -118,7 +118,8 @@ def get_raw_vocab(sentence_list, args, src=True):
 
 def get_vocab(data, args):
     if not os.path.exists(args["trg_vocab_path"]):
-        os.makedirs(f"vocab", exist_ok=True)
+        folder = "/".join(args["trg_vocab_path"].split("/")[:-1])
+        os.makedirs(folder, exist_ok=True)
         print("Create prepare dataset ...")
         src_sentence_list = []
         trg_sentence_list = []

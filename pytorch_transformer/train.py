@@ -68,7 +68,7 @@ class TrainManager:
             self.train_acc.append(train_acc)
 
             # Validation step
-            val_loss, val_acc = self.validate(epoch)
+            val_loss, val_acc = self.validate()
             self.val_loss.append(val_loss)
             self.val_acc.append(val_acc)
 
@@ -123,11 +123,12 @@ class TrainManager:
         
         return loss_tracker.avg, acc_tracker.avg
 
-    def validate(self, epoch):
+    def validate(self, test_loader=None):
+        data_loader = self.val_loader if test_loader is None else test_loader
         loss_tracker, acc_tracker = AvgMeter(), AvgMeter()
         self.model.eval()
         with torch.no_grad():
-            pbar = tqdm(self.val_loader, total=len(self.val_loader))
+            pbar = tqdm(data_loader, total=len(self.val_loader))
             for data in pbar:
                 src = data["src"].to(self.device)
                 trg = data["trg"].to(self.device)
@@ -155,7 +156,7 @@ class TrainManager:
                 acc_tracker.update(acc)
 
                 # Update progressbar description
-                pbar.set_description(f'Epoch: {epoch + 1:03d} - val_loss: {loss_tracker.avg:.3f} - val_acc: {acc_tracker.avg:.3f}%')
+                pbar.set_description(f'Val_loss: {loss_tracker.avg:.3f} - val_acc: {acc_tracker.avg:.3f}%')
         
         return loss_tracker.avg, acc_tracker.avg
 

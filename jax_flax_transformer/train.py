@@ -1,3 +1,4 @@
+# %%writefile /kaggle/working/sisu/jax_flax_transformer/train.py
 from jax import random
 import argparse
 import json
@@ -5,7 +6,6 @@ import os
 import jax
 from flax.training import train_state, checkpoints
 from dataset import get_data_loader
-import numpy as np
 from modules.transformer import Transformer
 import optax
 from tqdm import tqdm
