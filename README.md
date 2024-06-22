@@ -6,7 +6,6 @@ Dataset from https://huggingface.co/datasets/Helsinki-NLP/opus_books/viewer/en-h
 
 ## Requirements
 
-The code requires several libraries, just install what it needs 
 `pip install torch datasets jax`
 
 ## Config
