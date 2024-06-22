@@ -6,12 +6,13 @@ Dataset from https://huggingface.co/datasets/Helsinki-NLP/opus_books/viewer/en-h
 
 ## Requirements
 
-`pip install datasets`
-
-`pip install`
+The code requires several libraries, just install what it needs 
+`pip install torch datasets jax`
 
 ## Config
 
-Change configure file in folder `config`
+Change configure file in folder `config` to your wish
 
-## Pytorch
+## Training
+
+`python train.py --config_path ../config/config.json`
